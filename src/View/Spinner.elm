@@ -47,5 +47,6 @@ containerStyle =
     , width Units.size7
     , margin auto
     , Style.border Ct.content1
+    , boxSizing borderBox
     ]
         |> Css.batch

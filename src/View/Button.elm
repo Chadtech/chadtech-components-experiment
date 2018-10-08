@@ -32,7 +32,7 @@ margins =
 disabled : Style
 disabled =
     [ basic
-    , backgroundColor Ct.content3
+    , backgroundColor Ct.content2
     , Style.border Ct.content3
     , cursor default
     , color Ct.content4
@@ -65,12 +65,14 @@ secondary =
     , Style.border Ct.content3
     , color Ct.content5
     , hover
-        [ backgroundColor Ct.content4
-        , Style.border Ct.content4
+        [ backgroundColor Ct.content5
+        , Style.border Ct.content5
+        , color Ct.content1
         ]
     , active
         [ backgroundColor Ct.content5
         , Style.border Ct.content5
+        , color Ct.content1
         ]
     ]
         |> Css.batch
@@ -83,8 +85,7 @@ basic =
     , Style.fontSmoothingNone
     , outline none
     , minWidth Units.size7
-    , height Units.size5
-    , lineHeight Units.size5
+    , height Units.size4
     , boxSizing borderBox
     , padding2 zero Units.size3
     , cursor pointer

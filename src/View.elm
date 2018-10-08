@@ -20,12 +20,13 @@ import Style
 import Style.Units as Units
 import View.Button as Button
 import View.Card as Card
+import View.Input as Input
 import View.Spinner as Spinner
 
 
 view : Model -> Browser.Document Msg
 view model =
-    { title = "Gulp Elm Boilerplate"
+    { title = "Chadtech Components Experiment"
     , body =
         [ Style.globalStyles
         , Grid.row
@@ -37,6 +38,7 @@ view model =
         , cardPositioner extraSmallCard
         , cardPositioner loadingCard
         , cardPositioner smallCard
+        , cardPositioner tosCard
         , cardPositioner mediumCard
         , cardPositioner largeCard
         , cardPositioner extraLargeCard
@@ -99,6 +101,12 @@ smallCard =
                     [ Html.text "some text right in the middle posing a question" ]
                 ]
             , Grid.row
+                [ flex (int 1) ]
+                [ Input.view
+                    []
+                    [ Attrs.placeholder "placeholder" ]
+                ]
+            , Grid.row
                 [ justifyContent center ]
                 [ Button.view
                     [ css
@@ -114,6 +122,48 @@ smallCard =
                         ]
                     ]
                     "primary"
+                ]
+            ]
+        ]
+
+
+tosCard : Html Msg
+tosCard =
+    Card.view
+        [ Card.medium
+        , Style.center
+        ]
+        [ Card.header
+            { title = "medium" }
+        , Card.body
+            [ Grid.row
+                [ flex (int 1) ]
+                [ p
+                    []
+                    [ Html.text
+                        """
+                    You give me your username, email,
+                    and password, and I wont tell it to
+                    anyone. I promise. I also promise
+                    you that you can use my software, so
+                    long as you arent trying to screw with
+                    my software, and you dont violate this 
+                    agreement.
+                    """
+                    ]
+                ]
+            , Grid.row
+                []
+                [ Grid.column
+                    []
+                    [ Button.view
+                        [ css
+                            [ Button.primary
+                            , width (pct 100)
+                            ]
+                        ]
+                        "i agree"
+                    ]
                 ]
             ]
         ]

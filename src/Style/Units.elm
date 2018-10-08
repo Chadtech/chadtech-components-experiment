@@ -43,11 +43,11 @@ size3 =
     px (smallFactor * bigFactor)
 
 
-{-| 25
+{-| 27
 -}
 size4 : Px
 size4 =
-    px (bigFactor * bigFactor)
+    px (smallFactor * smallFactor * smallFactor)
 
 
 {-| 45
