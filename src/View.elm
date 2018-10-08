@@ -78,7 +78,7 @@ loadingCard =
         , Style.center
         ]
         [ Card.header
-            { title = "extra small" }
+            { title = "loading" }
         , Spinner.view
         ]
 
@@ -96,7 +96,7 @@ smallCard =
                 [ flex (int 1) ]
                 [ p
                     []
-                    [ Html.text "enter the url of the image you would like to import" ]
+                    [ Html.text "some text right in the middle posing a question" ]
                 ]
             , Grid.row
                 [ justifyContent center ]
@@ -106,14 +106,14 @@ smallCard =
                         , Button.margins
                         ]
                     ]
-                    "dont import"
+                    "secondary"
                 , Button.view
                     [ css
                         [ Button.primary
                         , Button.margins
                         ]
                     ]
-                    "import"
+                    "primary"
                 ]
             ]
         ]
@@ -198,4 +198,4 @@ title : Html Msg
 title =
     p
         [ css [ color Ct.content4 ] ]
-        [ Html.text "Elm Project : Go!" ]
+        [ Html.text "Chadtech Components Experiment" ]

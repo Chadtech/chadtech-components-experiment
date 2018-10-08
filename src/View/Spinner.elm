@@ -21,10 +21,11 @@ view =
 
 spinnerStyle : Style
 spinnerStyle =
-    [ property "animation" "slideby 1s infinite"
-    , property "animation-timeing-function" "linear"
+    [ property "animation-duration" "675ms"
+    , property "animation-iteration-count" "infinite"
+    , property "animation-timing-function" "linear"
     , [ ( 0, [ Animations.property "left" "-75px" ] )
-      , ( 1, [ Animations.property "left" "125px" ] )
+      , ( 100, [ Animations.property "left" "125px" ] )
       ]
         |> Animations.keyframes
         |> animationName
@@ -32,7 +33,7 @@ spinnerStyle =
     , height Units.size4
     , top (px 0)
     , position absolute
-    , backgroundColor Ct.content4
+    , backgroundColor Ct.content3
     ]
         |> Css.batch
 
