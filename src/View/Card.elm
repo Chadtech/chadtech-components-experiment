@@ -11,6 +11,7 @@ module View.Card exposing
 
 import Chadtech.Colors as Ct
 import Css exposing (..)
+import Css.Animations as Animations
 import Css.Global as Global
 import Html.Grid as Grid
 import Html.Styled as Html exposing (Html, node)
@@ -32,6 +33,12 @@ containerStyle =
     , boxSizing borderBox
     , displayFlex
     , flexDirection column
+    , property "animation-duration" "150ms"
+    , [ ( 0, [ Animations.transform [ scale 0 ] ] )
+      , ( 100, [ Animations.transform [ scale 1 ] ] )
+      ]
+        |> Animations.keyframes
+        |> animationName
     ]
         |> Css.batch
 
@@ -119,6 +126,8 @@ bodyStyle =
     , backgroundColor Ct.content2
     , flex (int 1)
     , padding Units.size1
+    , displayFlex
+    , flexDirection column
     ]
         |> Css.batch
 
@@ -126,7 +135,7 @@ bodyStyle =
 extraSmall : Style
 extraSmall =
     [ width Units.size8
-    , height Units.size6
+    , height Units.size7
     ]
         |> Css.batch
 
@@ -134,7 +143,7 @@ extraSmall =
 small : Style
 small =
     [ width Units.size9
-    , height Units.size7
+    , height Units.size8
     ]
         |> Css.batch
 
@@ -142,7 +151,7 @@ small =
 medium : Style
 medium =
     [ width Units.size9
-    , height Units.size8
+    , height Units.size9
     ]
         |> Css.batch
 

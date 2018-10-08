@@ -1,0 +1,8 @@
+@keyframes slideby {
+    from {
+       left: -75px;
+    }
+    to {
+        left: 125px;
+    }
+}

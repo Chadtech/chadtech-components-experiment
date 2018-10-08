@@ -20,6 +20,7 @@ import Style
 import Style.Units as Units
 import View.Button as Button
 import View.Card as Card
+import View.Spinner as Spinner
 
 
 view : Model -> Browser.Document Msg
@@ -34,6 +35,7 @@ view model =
                 [ title ]
             ]
         , cardPositioner extraSmallCard
+        , cardPositioner loadingCard
         , cardPositioner smallCard
         , cardPositioner mediumCard
         , cardPositioner largeCard
@@ -61,12 +63,23 @@ extraSmallCard =
         ]
         [ Card.header
             { title = "extra small" }
+        , Card.body
+            [ p
+                []
+                [ Html.text "Tiny card" ]
+            ]
+        ]
 
-        -- , Card.body
-        --     [ p
-        --         []
-        --         [ Html.text "Tiny card" ]
-        --     ]
+
+loadingCard : Html Msg
+loadingCard =
+    Card.view
+        [ Card.extraSmall
+        , Style.center
+        ]
+        [ Card.header
+            { title = "extra small" }
+        , Spinner.view
         ]
 
 
@@ -79,9 +92,29 @@ smallCard =
         [ Card.header
             { title = "small" }
         , Card.body
-            [ Button.view
-                [ css [ Button.basic ] ]
-                "okay"
+            [ Grid.row
+                [ flex (int 1) ]
+                [ p
+                    []
+                    [ Html.text "enter the url of the image you would like to import" ]
+                ]
+            , Grid.row
+                [ justifyContent center ]
+                [ Button.view
+                    [ css
+                        [ Button.secondary
+                        , Button.margins
+                        ]
+                    ]
+                    "dont import"
+                , Button.view
+                    [ css
+                        [ Button.primary
+                        , Button.margins
+                        ]
+                    ]
+                    "import"
+                ]
             ]
         ]
 
@@ -95,9 +128,12 @@ mediumCard =
         [ Card.header
             { title = "medium" }
         , Card.body
-            [ Button.view
-                [ css [ Button.basic ] ]
-                "upload"
+            [ p
+                []
+                [ Html.text "enter the url of the image you would like to import" ]
+            , Button.view
+                [ css [ Button.primary ] ]
+                "import"
             ]
         ]
 
@@ -111,7 +147,37 @@ largeCard =
         [ Card.header
             { title = "large" }
         , Card.body
-            []
+            [ Grid.row
+                [ flex (int 1) ]
+                [ p
+                    []
+                    [ Html.text "enter the url of the image you would like to import" ]
+                ]
+            , Grid.row
+                [ justifyContent center ]
+                [ Button.view
+                    [ css
+                        [ Button.disabled
+                        , Button.margins
+                        ]
+                    ]
+                    "disabled"
+                , Button.view
+                    [ css
+                        [ Button.secondary
+                        , Button.margins
+                        ]
+                    ]
+                    "dont import"
+                , Button.view
+                    [ css
+                        [ Button.primary
+                        , Button.margins
+                        ]
+                    ]
+                    "import"
+                ]
+            ]
         ]
 
 

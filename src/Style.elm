@@ -1,5 +1,6 @@
 module Style exposing
-    ( center
+    ( border
+    , center
     , fontSmoothingNone
     , globalStyles
     , hfnss
@@ -28,12 +29,17 @@ globalStyles =
 
 indent : Style
 indent =
-    border3 Units.size0 solid Ct.content1
+    border Ct.content1
 
 
 outdent : Style
 outdent =
-    border3 Units.size0 solid Ct.content5
+    border Ct.content5
+
+
+border : Color -> Style
+border =
+    border3 Units.size0 solid
 
 
 hfnss : Style
