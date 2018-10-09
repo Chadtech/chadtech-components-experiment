@@ -1,5 +1,6 @@
 module Style exposing
     ( border
+    , borderNone
     , center
     , fontSmoothingNone
     , globalStyles
@@ -25,6 +26,11 @@ globalStyles =
             , hfnss
             ]
         ]
+
+
+borderNone : Style
+borderNone =
+    property "border" "none"
 
 
 indent : Style

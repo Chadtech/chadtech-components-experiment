@@ -19,7 +19,7 @@ view styles attrs =
 inputStyle : Style
 inputStyle =
     [ backgroundColor Ct.background1
-    , Style.border Ct.background1
+    , Style.borderNone
     , outline none
     , boxSizing borderBox
     , height Units.size4

@@ -9,10 +9,10 @@ import Style
 import Style.Units as Units
 
 
-view : Html msg
-view =
+view : List Style -> Html msg
+view style =
     Html.div
-        [ css [ containerStyle ] ]
+        [ css [ containerStyle, Css.batch style ] ]
         [ Html.node "spinner"
             [ css [ spinnerStyle ] ]
             []
@@ -45,7 +45,6 @@ containerStyle =
     , height Units.size4
     , overflow hidden
     , width Units.size7
-    , margin auto
     , Style.border Ct.content1
     , boxSizing borderBox
     ]

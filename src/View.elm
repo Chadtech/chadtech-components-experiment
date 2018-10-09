@@ -29,22 +29,36 @@ view model =
     { title = "Chadtech Components Experiment"
     , body =
         [ Style.globalStyles
-        , Grid.row
+        , Grid.container
             []
-            [ Grid.column
+            [ Grid.row
                 []
-                [ title ]
+                [ Grid.column
+                    []
+                    [ title ]
+                ]
+            , Grid.row
+                []
+                [ newComponents
+                , newComponents
+                ]
             ]
-        , cardPositioner extraSmallCard
-        , cardPositioner loadingCard
-        , cardPositioner smallCard
-        , cardPositioner tosCard
-        , cardPositioner mediumCard
-        , cardPositioner largeCard
-        , cardPositioner extraLargeCard
         ]
             |> List.map Html.toUnstyled
     }
+
+
+newComponents : Html Msg
+newComponents =
+    Grid.column
+        [ flexDirection column ]
+        [ cardPositioner extraSmallCard
+        , cardPositioner loadingCard
+        , cardPositioner smallCard
+        , cardPositioner tosCard
+        , cardPositioner largeCard
+        , cardPositioner extraLargeCard
+        ]
 
 
 cardPositioner : Html Msg -> Html Msg
@@ -60,15 +74,14 @@ cardPositioner card =
 extraSmallCard : Html Msg
 extraSmallCard =
     Card.view
-        [ Card.extraSmall
-        , Style.center
+        [ Style.center
         ]
         [ Card.header
-            { title = "extra small" }
+            { title = "oh hi" }
         , Card.body
             [ p
                 []
-                [ Html.text "Tiny card" ]
+                [ Html.text "mark" ]
             ]
         ]
 
@@ -76,32 +89,31 @@ extraSmallCard =
 loadingCard : Html Msg
 loadingCard =
     Card.view
-        [ Card.extraSmall
-        , Style.center
-        ]
+        [ Style.center ]
         [ Card.header
             { title = "loading" }
         , Spinner.view
+            [ margin Units.size1 ]
         ]
 
 
 smallCard : Html Msg
 smallCard =
     Card.view
-        [ Card.small
+        [ Card.smallWidth
         , Style.center
         ]
         [ Card.header
-            { title = "small" }
+            { title = "input field" }
         , Card.body
             [ Grid.row
-                [ flex (int 1) ]
+                [ marginBottom Units.size1 ]
                 [ p
                     []
                     [ Html.text "some text right in the middle posing a question" ]
                 ]
             , Grid.row
-                [ flex (int 1) ]
+                [ marginBottom Units.size1 ]
                 [ Input.view
                     []
                     [ Attrs.placeholder "placeholder" ]
@@ -130,14 +142,17 @@ smallCard =
 tosCard : Html Msg
 tosCard =
     Card.view
-        [ Card.medium
+        [ Card.mediumWidth
         , Style.center
         ]
         [ Card.header
-            { title = "medium" }
+            { title = "terms of service" }
         , Card.body
             [ Grid.row
-                [ flex (int 1) ]
+                [ flex2 (int 0) (int 1)
+                , flexBasis auto
+                , marginBottom Units.size1
+                ]
                 [ p
                     []
                     [ Html.text
@@ -169,39 +184,48 @@ tosCard =
         ]
 
 
-mediumCard : Html Msg
-mediumCard =
-    Card.view
-        [ Card.medium
-        , Style.center
-        ]
-        [ Card.header
-            { title = "medium" }
-        , Card.body
-            [ p
-                []
-                [ Html.text "enter the url of the image you would like to import" ]
-            , Button.view
-                [ css [ Button.primary ] ]
-                "import"
-            ]
-        ]
-
-
 largeCard : Html Msg
 largeCard =
     Card.view
-        [ Card.large
+        [ Card.largeWidth
         , Style.center
         ]
         [ Card.header
             { title = "large" }
         , Card.body
             [ Grid.row
-                [ flex (int 1) ]
+                [ marginBottom Units.size2 ]
                 [ p
+                    [ css [ lineHeight Units.size4 ] ]
+                    [ Html.text "jesus i dont even know just some text and a bunch of buttons" ]
+                ]
+            , Grid.row
+                [ marginBottom Units.size2 ]
+                [ Grid.column
+                    [ flex none
+                    , width Units.size7
+                    ]
+                    [ p
+                        [ css [ lineHeight Units.size4 ] ]
+                        [ Html.text "labely" ]
+                    ]
+                , Grid.column
                     []
-                    [ Html.text "enter the url of the image you would like to import" ]
+                    [ Input.view [] [ Attrs.value "valuey" ] ]
+                ]
+            , Grid.row
+                [ marginBottom Units.size2 ]
+                [ Grid.column
+                    [ flex none
+                    , width Units.size7
+                    ]
+                    [ p
+                        [ css [ lineHeight Units.size4 ] ]
+                        [ Html.text "labely" ]
+                    ]
+                , Grid.column
+                    []
+                    [ Input.view [] [ Attrs.value "valuey" ] ]
                 ]
             , Grid.row
                 [ justifyContent center ]
@@ -218,14 +242,14 @@ largeCard =
                         , Button.margins
                         ]
                     ]
-                    "dont import"
+                    "dont"
                 , Button.view
                     [ css
                         [ Button.primary
                         , Button.margins
                         ]
                     ]
-                    "import"
+                    "yes"
                 ]
             ]
         ]

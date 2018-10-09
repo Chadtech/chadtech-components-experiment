@@ -1,11 +1,15 @@
 module View.Card exposing
     ( body
     , extraLarge
-    , extraSmall
+    , extraSmallHeight
+    , extraSmallWidth
     , header
-    , large
-    , medium
-    , small
+    , largeHeight
+    , largeWidth
+    , mediumHeight
+    , mediumWidth
+    , smallHeight
+    , smallWidth
     , view
     )
 
@@ -109,9 +113,11 @@ headerStyle =
 body : List (Html msg) -> Html msg
 body children =
     Grid.row
-        [ flex (int 1) ]
+        []
         [ Grid.column
-            [ padding Units.size1 ]
+            [ padding Units.size1
+            , flexDirection column
+            ]
             [ Html.node "card-body"
                 [ css [ bodyStyle ] ]
                 children
@@ -124,7 +130,8 @@ bodyStyle =
     [ Style.indent
     , boxSizing borderBox
     , backgroundColor Ct.content2
-    , flex (int 1)
+    , flex2 (int 0) (int 1)
+    , flexBasis auto
     , padding Units.size1
     , displayFlex
     , flexDirection column
@@ -132,36 +139,44 @@ bodyStyle =
         |> Css.batch
 
 
-extraSmall : Style
-extraSmall =
-    [ width Units.size8
-    , height Units.size7
-    ]
-        |> Css.batch
+extraSmallWidth : Style
+extraSmallWidth =
+    width Units.size8
 
 
-small : Style
-small =
-    [ width Units.size9
-    , height Units.size8
-    ]
-        |> Css.batch
+extraSmallHeight : Style
+extraSmallHeight =
+    height Units.size7
 
 
-medium : Style
-medium =
-    [ width Units.size9
-    , height Units.size9
-    ]
-        |> Css.batch
+smallWidth : Style
+smallWidth =
+    width Units.size9
 
 
-large : Style
-large =
-    [ width Units.size10
-    , height Units.size9
-    ]
-        |> Css.batch
+smallHeight : Style
+smallHeight =
+    height Units.size8
+
+
+mediumWidth : Style
+mediumWidth =
+    width Units.size9
+
+
+mediumHeight : Style
+mediumHeight =
+    height Units.size9
+
+
+largeWidth : Style
+largeWidth =
+    width Units.size10
+
+
+largeHeight : Style
+largeHeight =
+    height Units.size9
 
 
 extraLarge : Style
