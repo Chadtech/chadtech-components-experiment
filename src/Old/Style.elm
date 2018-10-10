@@ -1,6 +1,5 @@
 module Old.Style exposing
-    ( border
-    , borderNone
+    ( borderNone
     , center
     , fontSmoothingNone
     , globalStyles
@@ -51,11 +50,6 @@ outdent =
     , borderBottom3 Units.size0 solid Ct.content0
     ]
         |> Css.batch
-
-
-border : Color -> Style
-border =
-    border3 Units.size0 solid
 
 
 hfnss : Style

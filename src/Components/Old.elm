@@ -134,9 +134,9 @@ tosCard =
                     and password, and I wont tell it to
                     anyone. I promise. I also promise
                     you that you can use my software, so
-                    long as you arent trying to screw with
-                    my software, and you dont violate this 
-                    agreement.
+                    long as you arent trying to hack into 
+                    user data or this software and you 
+                    dont violate this agreement.
                     """
                     ]
                 ]

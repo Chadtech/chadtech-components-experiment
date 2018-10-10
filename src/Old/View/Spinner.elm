@@ -41,7 +41,7 @@ spinnerStyle =
 containerStyle : Style
 containerStyle =
     [ position relative
-    , backgroundColor Ct.background2
+    , backgroundColor Ct.background1
     , height Units.size4
     , overflow hidden
     , width Units.size7
