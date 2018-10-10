@@ -32,10 +32,10 @@ margins =
 disabled : Style
 disabled =
     [ basic
-    , backgroundColor Ct.content2
-    , Style.border Ct.content3
     , cursor default
-    , color Ct.content4
+    , backgroundColor Ct.content2
+    , Style.borderNone
+    , color Ct.content3
     ]
         |> Css.batch
 
@@ -43,17 +43,12 @@ disabled =
 primary : Style
 primary =
     [ basic
-    , backgroundColor Ct.content4
-    , Style.border Ct.content4
-    , color Ct.content1
-    , hover
-        [ backgroundColor Ct.content5
-        , Style.border Ct.content5
-        ]
-    , active
-        [ backgroundColor Ct.content5
-        , Style.border Ct.content5
-        ]
+    , color Ct.content4
+    , backgroundColor Ct.content3
+    , Style.borderNone
+    , color Ct.content5
+    , hover [ backgroundColor Ct.content4 ]
+    , active [ backgroundColor Ct.content5 ]
     ]
         |> Css.batch
 
@@ -61,18 +56,16 @@ primary =
 secondary : Style
 secondary =
     [ basic
-    , backgroundColor Ct.content3
-    , Style.border Ct.content3
-    , color Ct.content5
+    , backgroundColor Ct.content2
+    , Style.borderNone
+    , color Ct.content4
     , hover
-        [ backgroundColor Ct.content5
-        , Style.border Ct.content5
-        , color Ct.content1
+        [ backgroundColor Ct.content3
+        , color Ct.content5
         ]
     , active
-        [ backgroundColor Ct.content5
-        , Style.border Ct.content5
-        , color Ct.content1
+        [ backgroundColor Ct.content4
+        , color Ct.content5
         ]
     ]
         |> Css.batch
@@ -80,8 +73,7 @@ secondary =
 
 basic : Style
 basic =
-    [ color Ct.content5
-    , Style.hfnss
+    [ Style.hfnss
     , Style.fontSmoothingNone
     , outline none
     , minWidth Units.size7

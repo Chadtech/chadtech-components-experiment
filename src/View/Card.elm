@@ -1,6 +1,7 @@
 module View.Card exposing
     ( body
-    , extraLarge
+    , extraLargeHeight
+    , extraLargeWidth
     , extraSmallHeight
     , extraSmallWidth
     , header
@@ -22,6 +23,7 @@ import Html.Styled as Html exposing (Html, node)
 import Html.Styled.Attributes as Attrs exposing (css)
 import Style
 import Style.Units as Units
+import View.Button as Button
 
 
 view : List Style -> List (Html msg) -> Html msg
@@ -33,7 +35,7 @@ view styles =
 containerStyle : Style
 containerStyle =
     [ Style.outdent
-    , backgroundColor Ct.content4
+    , backgroundColor Ct.content3
     , boxSizing borderBox
     , displayFlex
     , flexDirection column
@@ -48,7 +50,9 @@ containerStyle =
 
 
 type alias HeaderModel =
-    { title : String }
+    { title : String
+    , shouldShowCloseButton : Bool
+    }
 
 
 header : HeaderModel -> Html msg
@@ -59,7 +63,8 @@ header model =
             [ padding Units.size1
             , displayFlex
             ]
-            [ Html.node "card-header"
+            [ closeButton model.shouldShowCloseButton
+            , Html.node "card-header"
                 [ css [ headerStyle ] ]
                 [ Html.p
                     [ css [ headerTextStyle ] ]
@@ -67,6 +72,32 @@ header model =
                 ]
             ]
         ]
+
+
+closeButton : Bool -> Html msg
+closeButton shouldShowCloseButton =
+    if shouldShowCloseButton then
+        Button.view
+            [ css
+                [ Button.secondary
+                , width Units.size4
+                , minWidth Units.size4
+                , padding zero
+                , paddingBottom (px 2)
+                , hover
+                    [ color Ct.content5
+                    , backgroundColor Ct.content2
+                    ]
+                , active
+                    [ color Ct.content5
+                    , backgroundColor Ct.content4
+                    ]
+                ]
+            ]
+            "x"
+
+    else
+        Html.text ""
 
 
 headerCloseButton : Html msg
@@ -84,8 +115,8 @@ headerCloseButtonStyle =
     , padding zero
     , paddingBottom (px 2)
     , Style.indent
-    , backgroundColor Ct.content3
-    , active [ backgroundColor Ct.content1 ]
+    , backgroundColor Ct.content2
+    , active [ backgroundColor Ct.content0 ]
     , boxSizing borderBox
     , lineHeight (px 14)
     ]
@@ -94,7 +125,7 @@ headerCloseButtonStyle =
 
 headerTextStyle : Style
 headerTextStyle =
-    [ color Ct.content1
+    [ color Ct.content0
     , lineHeight Units.size4
     , textAlign center
     ]
@@ -129,7 +160,7 @@ bodyStyle : Style
 bodyStyle =
     [ Style.indent
     , boxSizing borderBox
-    , backgroundColor Ct.content2
+    , backgroundColor Ct.content1
     , flex2 (int 0) (int 1)
     , flexBasis auto
     , padding Units.size1
@@ -179,9 +210,11 @@ largeHeight =
     height Units.size9
 
 
-extraLarge : Style
-extraLarge =
-    [ width Units.size10
-    , height Units.size10
-    ]
-        |> Css.batch
+extraLargeWidth : Style
+extraLargeWidth =
+    width Units.size10
+
+
+extraLargeHeight : Style
+extraLargeHeight =
+    height Units.size10

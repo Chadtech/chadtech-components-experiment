@@ -77,7 +77,9 @@ extraSmallCard =
         [ Style.center
         ]
         [ Card.header
-            { title = "oh hi" }
+            { title = "oh hi"
+            , shouldShowCloseButton = False
+            }
         , Card.body
             [ p
                 []
@@ -91,7 +93,9 @@ loadingCard =
     Card.view
         [ Style.center ]
         [ Card.header
-            { title = "loading" }
+            { title = "loading"
+            , shouldShowCloseButton = False
+            }
         , Spinner.view
             [ margin Units.size1 ]
         ]
@@ -104,7 +108,9 @@ smallCard =
         , Style.center
         ]
         [ Card.header
-            { title = "input field" }
+            { title = "input field"
+            , shouldShowCloseButton = True
+            }
         , Card.body
             [ Grid.row
                 [ marginBottom Units.size1 ]
@@ -146,7 +152,9 @@ tosCard =
         , Style.center
         ]
         [ Card.header
-            { title = "terms of service" }
+            { title = "terms of service"
+            , shouldShowCloseButton = False
+            }
         , Card.body
             [ Grid.row
                 [ flex2 (int 0) (int 1)
@@ -157,7 +165,7 @@ tosCard =
                     []
                     [ Html.text
                         """
-                    You give me your username, email,
+                    you give me your username, email,
                     and password, and I wont tell it to
                     anyone. I promise. I also promise
                     you that you can use my software, so
@@ -191,13 +199,45 @@ largeCard =
         , Style.center
         ]
         [ Card.header
-            { title = "large" }
+            { title = "large"
+            , shouldShowCloseButton = True
+            }
         , Card.body
             [ Grid.row
                 [ marginBottom Units.size2 ]
                 [ p
                     [ css [ lineHeight Units.size4 ] ]
-                    [ Html.text "jesus i dont even know just some text and a bunch of buttons" ]
+                    [ Html.text "hey why dont you fill this stuff out" ]
+                ]
+            , Grid.row
+                [ marginBottom Units.size2 ]
+                [ Grid.column
+                    []
+                    [ Input.view
+                        []
+                        [ Attrs.placeholder "vornamen"
+                        , Attrs.value ""
+                        ]
+                    ]
+                , Grid.column
+                    [ marginLeft Units.size2 ]
+                    [ Input.view
+                        []
+                        [ Attrs.placeholder "nachnamen"
+                        , Attrs.value ""
+                        ]
+                    ]
+                ]
+            , Grid.row
+                [ marginBottom Units.size2 ]
+                [ Grid.column
+                    []
+                    [ Input.view
+                        []
+                        [ Attrs.placeholder "email"
+                        , Attrs.value ""
+                        ]
+                    ]
                 ]
             , Grid.row
                 [ marginBottom Units.size2 ]
@@ -226,6 +266,41 @@ largeCard =
                 , Grid.column
                     []
                     [ Input.view [] [ Attrs.value "valuey" ] ]
+                , Grid.column
+                    [ flex none
+                    , width Units.size7
+                    , marginLeft Units.size2
+                    ]
+                    [ p
+                        [ css [ lineHeight Units.size4 ] ]
+                        [ Html.text "labely" ]
+                    ]
+                , Grid.column
+                    []
+                    [ Input.view [] [ Attrs.value "valuey" ] ]
+                ]
+            , Grid.row
+                [ marginBottom Units.size2 ]
+                [ Grid.column
+                    [ flex none
+                    , width Units.size7
+                    ]
+                    [ p
+                        [ css [ lineHeight Units.size4 ] ]
+                        [ Html.text "options" ]
+                    ]
+                , Grid.column
+                    []
+                    [ Button.view
+                        [ css [ Button.primary ] ]
+                        "option 0"
+                    , Button.view
+                        [ css [ Button.secondary ] ]
+                        "option 1"
+                    , Button.view
+                        [ css [ Button.secondary ] ]
+                        "option 2"
+                    ]
                 ]
             , Grid.row
                 [ justifyContent center ]
@@ -242,7 +317,62 @@ largeCard =
                         , Button.margins
                         ]
                     ]
-                    "dont"
+                    "delete"
+                , Button.view
+                    [ css
+                        [ Button.primary
+                        , Button.margins
+                        ]
+                    ]
+                    "okay"
+                ]
+            ]
+        ]
+
+
+extraLargeCard : Html Msg
+extraLargeCard =
+    Card.view
+        [ Card.extraLargeWidth
+        , Style.center
+        ]
+        [ Card.header
+            { title = "squarepusher playing his instrument"
+            , shouldShowCloseButton = True
+            }
+        , Card.body
+            [ Grid.row
+                [ marginBottom Units.size1 ]
+                [ Grid.column
+                    []
+                    [ div
+                        [ css [ minWidth (px 0) ] ]
+                        [ Html.img
+                            [ css [ width (pct 100) ]
+                            , Attrs.src "https://i.ytimg.com/vi/VypU8zojFsY/maxresdefault.jpg"
+                            ]
+                            []
+                        ]
+                    ]
+                ]
+            , Grid.row
+                [ marginBottom Units.size1 ]
+                [ Grid.column
+                    [ justifyContent center ]
+                    [ p
+                        []
+                        [ Html.text "bretty cool huh" ]
+                    ]
+                ]
+            , Grid.row
+                [ justifyContent center ]
+                [ Button.view
+                    [ css
+                        [ Button.secondary
+                        , Button.margins
+                        ]
+                    ]
+                    "no"
                 , Button.view
                     [ css
                         [ Button.primary
@@ -255,21 +385,8 @@ largeCard =
         ]
 
 
-extraLargeCard : Html Msg
-extraLargeCard =
-    Card.view
-        [ Card.extraLarge
-        , Style.center
-        ]
-        [ Card.header
-            { title = "extra large" }
-        , Card.body
-            []
-        ]
-
-
 title : Html Msg
 title =
     p
-        [ css [ color Ct.content4 ] ]
+        [ css [ color Ct.content3 ] ]
         [ Html.text "Chadtech Components Experiment" ]

@@ -18,7 +18,7 @@ view styles attrs =
 
 inputStyle : Style
 inputStyle =
-    [ backgroundColor Ct.background1
+    [ backgroundColor Ct.background2
     , Style.borderNone
     , outline none
     , boxSizing borderBox

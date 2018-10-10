@@ -20,7 +20,7 @@ globalStyles : Html msg
 globalStyles =
     global
         [ Css.Global.p
-            [ color Ct.content5
+            [ color Ct.content4
             , margin (px 0)
             , fontSmoothingNone
             , hfnss
@@ -35,12 +35,12 @@ borderNone =
 
 indent : Style
 indent =
-    border Ct.content1
+    border Ct.content0
 
 
 outdent : Style
 outdent =
-    border Ct.content5
+    border Ct.content4
 
 
 border : Color -> Style

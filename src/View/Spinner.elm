@@ -33,7 +33,7 @@ spinnerStyle =
     , height Units.size4
     , top (px 0)
     , position absolute
-    , backgroundColor Ct.content3
+    , backgroundColor Ct.content2
     ]
         |> Css.batch
 
@@ -45,7 +45,7 @@ containerStyle =
     , height Units.size4
     , overflow hidden
     , width Units.size7
-    , Style.border Ct.content1
+    , Style.border Ct.content0
     , boxSizing borderBox
     ]
         |> Css.batch
